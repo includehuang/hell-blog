@@ -9,10 +9,17 @@
     },
     "dependencies": {
         "ant-design-vue": "^3.0.0-beta.9",
+        "axios": "^0.21.1",
         "core-js": "^3.6.5",
+        "dayjs": "^1.10.7",
+        "highlight.js": "^11.2.0",
+        "node-rsa": "^1.1.1",
         "vue": "^3.0.0",
+        "vue-i18n": "^9.2.0-beta.30",
         "vue-router": "^4.0.0-0",
-        "vuex": "^4.0.0-0"
+        "vuex": "^4.0.0-0",
+        "waifus": "^1.2.2",
+        "wangeditor": "^4.7.8"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "~4.5.0",
@@ -23,7 +30,14 @@
         "@vue/compiler-sfc": "^3.0.0",
         "babel-eslint": "^10.1.0",
         "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^7.0.0"
+        "eslint-plugin-vue": "^7.0.0",
+        "echarts": "^5.2.0",
+        "css-loader": "^0.28.11",
+        "less": "^2.7.3",
+        "less-loader": "^4.1.0",
+        "style-loader": "^3.3.1",
+        "style-resources-loader": "^1.4.1",
+        "stylus-loader": "^6.2.0"
     },
     "eslintConfig": {
         "root": true,

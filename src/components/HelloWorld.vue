@@ -37,10 +37,6 @@ export default {
     props: {
         msg: String
     },
-    created() {
-        console.log(this)
-        console.log(this.$store.state.common.avatar)
-    }
 }
 </script>
 
