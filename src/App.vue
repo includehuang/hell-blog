@@ -1,13 +1,15 @@
 <!--suppress CssUnusedSymbol -->
 <template>
-    <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <a-layout class="blog-app-main" id="app">
+        <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
+        </a-layout-header>
+        <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
+            <router-view/>
+        </a-layout-content>
+    </a-layout>
 </template>
 
-<style>
+<style lang="less">
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -15,17 +17,10 @@
     text-align: center;
     color: #2c3e50;
 }
-
-#nav {
-    padding: 30px;
-}
-
-#nav a {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-    color: #42b983;
+.blog-app-main {
+    .ant-layout-header {
+        background: @CLEAR_CHILL;
+        height: 80px;
+    }
 }
 </style>

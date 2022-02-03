@@ -61,5 +61,11 @@ module.exports = {
         //         changeOrigin: true
         //     }
         // }
+    },
+    pluginOptions: {
+        'style-resources-loader': {
+            preProcessor: 'less',
+            patterns: [path.resolve(__dirname, 'src\\assets\\style\\color.less')]
+        }
     }
 }
