@@ -6,7 +6,6 @@ import antd from 'ant-design-vue'
 import dayjs from "dayjs"
 import i18n from "@/lang/i18n"
 import * as echarts from "echarts"
-import 'ant-design-vue/dist/antd.less'
 
 const app = createApp(App)
 app.use(antd)
