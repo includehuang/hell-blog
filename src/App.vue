@@ -1,7 +1,7 @@
 <template>
     <a-layout class="blog-app-main" id="app">
         <a-layout-header>
-            <div class="logo">
+            <div class="logo left">
                 <img :src="logo" alt="">
             </div>
             <a-menu
@@ -14,7 +14,7 @@
                     {{ $t(`menus.${item.name}`) }}
                 </a-menu-item>
             </a-menu>
-            <div class="logo">
+            <div class="logo right">
                 <img :src="logo" alt="">
             </div>
         </a-layout-header>
@@ -91,25 +91,30 @@ body {
     .ant-layout-header {
         background: @headerColor;
         height: @headerHeight;
-        position: fixed;
         z-index: 1;
         width: 100%;
-        display: flex;
+        min-width: @minWidth;
         .logo {
             display: inline-block;
             width: @headerHeight * @logoScale;
             height: @headerHeight;
             line-height: @headerHeight;
-            flex: 0 0 @headerHeight * @logoScale;
             img {
                 width: @headerHeight * @logoScale * 0.8;
                 height: @headerHeight * 0.8;
             }
         }
+        .logo.left {
+            left: 0;
+        }
+        .logo.right {
+            right: 0;
+        }
         .ant-menu {
+            display: inline-block;
+            width: calc(~"100% - @{headerHeight} * @{logoScale} * 2");
             background: @headerColor;
             line-height: @headerHeight;
-            flex: 1 1 auto;
             .ant-menu-item {
                 span.ant-menu-title-content {
                     padding: 0 20px;
@@ -119,8 +124,12 @@ body {
     }
     .ant-layout-content {
         padding: 0 50px;
-        margin-top: @headerHeight;
-        min-height: calc(~"100% - 80px");
+        height: calc(~"100% - @{headerHeight}");
+        min-height: calc(~"100% - @{headerHeight}");
+        overflow: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }
 </style>
