@@ -1,6 +1,9 @@
 <template>
     <a-layout class="blog-app-main" id="app">
         <a-layout-header>
+            <div class="logo">
+                <img :src="logo" alt="">
+            </div>
             <a-menu
                 v-model:selectedKeys="selectMenu"
                 theme="light"
@@ -11,6 +14,9 @@
                     {{ $t(`menus.${item.name}`) }}
                 </a-menu-item>
             </a-menu>
+            <div class="logo">
+                <img :src="logo" alt="">
+            </div>
         </a-layout-header>
         <a-layout-content>
             <router-view/>
@@ -20,11 +26,13 @@
 
 <script>
 import { routes } from "@/router"
+import logo from "@/assets/img/image2vector.svg"
 
 export default {
     data() {
         return {
             routes,
+            logo,
             selectMenu: [],
             menus: [],
         }
@@ -52,26 +60,26 @@ export default {
 </script>
 
 <style lang="less">
+@minWidth: 1280px;
+@minHeight: 720px;
 @headerHeight: 80px;
+@logoScale: 9/5;
 * {
     box-sizing: border-box;
 }
-
 html {
     margin: 0;
     padding: 0;
     height: 100%;
-    min-width: 1280px;
-    min-height: 720px;
+    min-width: @minWidth;
+    min-height: @minHeight;
 }
-
 body {
     margin: 0;
     padding: 0;
     height: 100%;
     background-color: rgba(255, 255, 255, 0) !important;
 }
-
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -86,9 +94,22 @@ body {
         position: fixed;
         z-index: 1;
         width: 100%;
+        display: flex;
+        .logo {
+            display: inline-block;
+            width: @headerHeight * @logoScale;
+            height: @headerHeight;
+            line-height: @headerHeight;
+            flex: 0 0 @headerHeight * @logoScale;
+            img {
+                width: @headerHeight * @logoScale * 0.8;
+                height: @headerHeight * 0.8;
+            }
+        }
         .ant-menu {
             background: @headerColor;
             line-height: @headerHeight;
+            flex: 1 1 auto;
             .ant-menu-item {
                 span.ant-menu-title-content {
                     padding: 0 20px;
