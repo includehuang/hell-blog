@@ -5,6 +5,6 @@
 System.config({
     'paths': {
         '@/*': './src/*',
-        'static/*': './static/*',
+        'static': './public/static',
     }
 })

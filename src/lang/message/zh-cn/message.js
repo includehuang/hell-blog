@@ -1,4 +1,4 @@
 export default {
-    'test': '测试',
-    'i18n': '国际化',
+    'message.test': '测试',
+    'message.i18n': '国际化',
 }

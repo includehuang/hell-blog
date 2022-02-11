@@ -1,6 +1,6 @@
 export default {
-    'Home': '首页',
-    'Blog': '博客',
-    'Works': '作品',
-    'Me': '关于我',
+    'menus.Home': '首页',
+    'menus.Blog': '博客',
+    'menus.Works': '作品',
+    'menus.Me': '关于我',
 }

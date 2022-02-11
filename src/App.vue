@@ -94,6 +94,8 @@ body {
         z-index: 1;
         width: 100%;
         min-width: @minWidth;
+        box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px;
+        transition: background 0.3s ease 0s, width 0.2s ease 0s;
         .logo {
             display: inline-block;
             width: @headerHeight * @logoScale;
@@ -111,10 +113,13 @@ body {
             right: 0;
         }
         .ant-menu {
-            display: inline-block;
+            display: inline-flex;
+            vertical-align: bottom;
+            justify-content: center;
             width: calc(~"100% - @{headerHeight} * @{logoScale} * 2");
             background: @headerColor;
             line-height: @headerHeight;
+            border-bottom: none;
             .ant-menu-item {
                 span.ant-menu-title-content {
                     padding: 0 20px;
@@ -123,7 +128,9 @@ body {
         }
     }
     .ant-layout-content {
-        padding: 0 50px;
+        width: @minWidth;
+        margin: 0 auto;
+        padding: 0 40px;
         height: calc(~"100% - @{headerHeight}");
         min-height: calc(~"100% - @{headerHeight}");
         overflow: auto;
