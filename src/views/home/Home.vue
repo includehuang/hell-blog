@@ -6,6 +6,7 @@
 <template>
     <div id="blog-app-home">
         <a-row :gutter="24">
+            <!-- Home页Header -->
             <a-col :span="24" class="home-header">
                 <div class="home-header-content">
                     <div class="home-avatar">
@@ -32,7 +33,46 @@
         </a-row>
         <a-row :gutter="24">
             <a-col :span="16">
-                <div style="background: #42b983; height: 2000px"></div>
+                <!-- 进行中的项目 -->
+                <div class="run-projects">
+                    <a-card title="进行中的项目">
+                        <template #extra>
+                            <a href="#">全部项目</a>
+                        </template>
+                        <a-card-grid style="width: 25%; text-align: center">个人空间</a-card-grid>
+                        <a-card-grid style="width: 25%; text-align: center">个人博客</a-card-grid>
+                        <a-card-grid style="width: 25%; text-align: center">祎果小说站</a-card-grid>
+                        <a-card-grid style="width: 25%; text-align: center">H5低代码</a-card-grid>
+                        <a-card-grid style="width: 25%; text-align: center">Vue3学习</a-card-grid>
+                        <a-card-grid style="width: 25%; text-align: center">React学习</a-card-grid>
+                        <a-card-grid style="width: 25%; text-align: center">Node学习</a-card-grid>
+                        <a-card-grid style="width: 25%; text-align: center">游戏人生</a-card-grid>
+                    </a-card>
+                </div>
+                <!-- 最近更新 -->
+                <div class="update-blog" style="margin-top: 24px;">
+                    <a-card title="最近更新">
+                        <template #extra>
+                            <a href="#">全部文章</a>
+                        </template>
+                        <a-list item-layout="horizontal" :data-source="dataList">
+                            <template #renderItem="{ item }">
+                                <a-list-item>
+                                    <a-list-item-meta
+                                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                                    >
+                                        <template #title>
+                                            <a href="https://www.antdv.com/">{{ item.title }}</a>
+                                        </template>
+                                        <template #avatar>
+                                            <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                        </template>
+                                    </a-list-item-meta>
+                                </a-list-item>
+                            </template>
+                        </a-list>
+                    </a-card>
+                </div>
             </a-col>
             <a-col :span="8">
                 <div style="background: #0be881; height: 2000px"></div>
@@ -50,6 +90,20 @@ export default {
             avatar: 'static/img/avatar.jpg',
             nowTime: this.$day().format('HH: mm: ss'),
             openTime: this.$day().format('HH'),
+            dataList: [
+                {
+                    title: 'Ant Design Title 1',
+                },
+                {
+                    title: 'Ant Design Title 2',
+                },
+                {
+                    title: 'Ant Design Title 3',
+                },
+                {
+                    title: 'Ant Design Title 4',
+                },
+            ],
         }
     },
     mounted() {

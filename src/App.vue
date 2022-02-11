@@ -84,7 +84,6 @@ body {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     height: 100%;
 }
 .blog-app-main {
@@ -101,6 +100,7 @@ body {
             width: @headerHeight * @logoScale;
             height: @headerHeight;
             line-height: @headerHeight;
+            text-align: center;
             img {
                 width: @headerHeight * @logoScale * 0.8;
                 height: @headerHeight * 0.8;
