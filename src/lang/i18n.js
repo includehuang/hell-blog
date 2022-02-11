@@ -29,7 +29,7 @@ function buildMessage(path, list) {
     let res = {}
     list.forEach(item => {
         const text = require(`./message/${path}/${item}`)
-        res[item] = text.default
+        res = {...res, ...text.default}
     })
     return res
 }
