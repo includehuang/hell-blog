@@ -1,4 +1,6 @@
 export default {
-    'message.test': '测试',
-    'message.i18n': '国际化',
+    'runningProject': '进行中的项目',
+    'allProject': '全部项目',
+    'recentUpdates': '最近更新',
+    'allArticle': '全部文章',
 }

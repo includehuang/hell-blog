@@ -35,37 +35,57 @@
             <a-col :span="16">
                 <!-- 进行中的项目 -->
                 <div class="run-projects">
-                    <a-card title="进行中的项目">
+                    <a-card :title="$t('runningProject')">
                         <template #extra>
-                            <a href="#">全部项目</a>
+                            <a href="#">{{ $t('allProject') }}</a>
                         </template>
-                        <a-card-grid style="width: 25%; text-align: center">个人空间</a-card-grid>
-                        <a-card-grid style="width: 25%; text-align: center">个人博客</a-card-grid>
-                        <a-card-grid style="width: 25%; text-align: center">祎果小说站</a-card-grid>
-                        <a-card-grid style="width: 25%; text-align: center">H5低代码</a-card-grid>
-                        <a-card-grid style="width: 25%; text-align: center">Vue3学习</a-card-grid>
-                        <a-card-grid style="width: 25%; text-align: center">React学习</a-card-grid>
-                        <a-card-grid style="width: 25%; text-align: center">Node学习</a-card-grid>
-                        <a-card-grid style="width: 25%; text-align: center">游戏人生</a-card-grid>
+                        <template v-for="item in projectList" :key="item.title">
+                            <a-card-grid style="width: 25%;">
+                                <a-card-meta>
+                                    <template #title>
+                                        <a :href="item.href" v-title>{{ item.title }}</a>
+                                    </template>
+                                    <template #avatar>
+                                        <a-avatar :src="item.avatar"/>
+                                    </template>
+                                    <template #description>
+                                        <a-typography-paragraph
+                                            :ellipsis="{ rows: 2, expandable: false}"
+                                            :content="item.description"
+                                            v-title
+                                        />
+                                    </template>
+                                </a-card-meta>
+                            </a-card-grid>
+                        </template>
                     </a-card>
                 </div>
                 <!-- 最近更新 -->
-                <div class="update-blog" style="margin-top: 24px;">
-                    <a-card title="最近更新">
+                <div class="recent-updates" style="margin-top: 24px;">
+                    <a-card :title="$t('recentUpdates')">
                         <template #extra>
-                            <a href="#">全部文章</a>
+                            <a href="#">{{ $t('allArticle') }}</a>
                         </template>
-                        <a-list item-layout="horizontal" :data-source="dataList">
+                        <a-list item-layout="horizontal" :data-source="projectList">
                             <template #renderItem="{ item }">
                                 <a-list-item>
-                                    <a-list-item-meta
-                                        description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                                    >
+                                    <a-list-item-meta>
                                         <template #title>
-                                            <a href="https://www.antdv.com/">{{ item.title }}</a>
+                                            <a :href="item.href" v-title>{{ item.title }}</a>
                                         </template>
                                         <template #avatar>
-                                            <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                            <a-avatar :src="item.avatar" />
+                                        </template>
+                                        <template #description>
+                                            <a-typography-paragraph
+                                                :ellipsis="{ rows: 2, expandable: false}"
+                                                :content="item.description"
+                                                v-title
+                                            />
+                                            <div style="display: flex">
+                                                <span style="flex-grow: 1">2020-2-12 21:24:24</span>
+                                                <span><eye-outlined /> 111</span>
+                                            </div>
                                         </template>
                                     </a-list-item-meta>
                                 </a-list-item>
@@ -83,30 +103,26 @@
 </template>
 
 <script>
-
+import { EyeOutlined } from '@ant-design/icons-vue'
 export default {
+    components: {
+        EyeOutlined,
+    },
     data() {
         return {
             avatar: 'static/img/avatar.jpg',
             nowTime: this.$day().format('HH: mm: ss'),
             openTime: this.$day().format('HH'),
-            dataList: [
-                {
-                    title: 'Ant Design Title 1',
-                },
-                {
-                    title: 'Ant Design Title 2',
-                },
-                {
-                    title: 'Ant Design Title 3',
-                },
-                {
-                    title: 'Ant Design Title 4',
-                },
-            ],
+            projectList: [],
+            recentUpdates: [],
         }
     },
     mounted() {
+        // 获取进行中的项目（此处暂时由前端写死，更新时直接更新config）
+        this.$axios.get('/static/config/projectList.json').then(res => {
+            this.projectList = res.data
+        })
+        // 页面的时间显示，一秒一刷
         setInterval(() => {
             this.nowTime = this.$day().format('HH: mm: ss')
         }, 1000)
@@ -141,6 +157,7 @@ export default {
                 width: 600px;
                 height: 140px;
                 padding: 12px;
+                text-align: right;
             }
             .home-welcome {
                 color: @text-color;
@@ -154,6 +171,16 @@ export default {
                 line-height: 29px;
                 font-size: 12px;
             }
+        }
+    }
+    .run-projects {
+        .ant-card-meta-title {
+            a {
+                color: @heading-color;
+            }
+        }
+        .ant-card-meta-description {
+            height: 44px;
         }
     }
 }
