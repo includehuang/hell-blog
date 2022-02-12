@@ -34,19 +34,44 @@
         <a-row :gutter="24">
             <a-col :span="16">
                 <!-- 进行中的项目 -->
-                <div class="run-projects">
-                    <a-card :title="$t('runningProject')">
-                        <template #extra>
-                            <a href="#">{{ $t('allProject') }}</a>
-                        </template>
-                        <template v-for="item in projectList" :key="item.title">
-                            <a-card-grid style="width: 25%;">
-                                <a-card-meta>
+                <a-card class="run-projects" :title="$t('runningProject')">
+                    <template #extra>
+                        <a href="#">{{ $t('allProject') }}</a>
+                    </template>
+                    <template v-for="item in projectList" :key="item.title">
+                        <a-card-grid style="width: 25%;">
+                            <a-card-meta>
+                                <template #title>
+                                    <a :href="item.href" v-title>{{ item.title }}</a>
+                                </template>
+                                <template #avatar>
+                                    <a-avatar :src="item.avatar"/>
+                                </template>
+                                <template #description>
+                                    <a-typography-paragraph
+                                        :ellipsis="{ rows: 2, expandable: false}"
+                                        :content="item.description"
+                                        v-title
+                                    />
+                                </template>
+                            </a-card-meta>
+                        </a-card-grid>
+                    </template>
+                </a-card>
+                <!-- 最近更新 -->
+                <a-card class="recent-updates" style="margin-top: 24px;" :title="$t('recentUpdates')">
+                    <template #extra>
+                        <a href="#">{{ $t('allArticle') }}</a>
+                    </template>
+                    <a-list item-layout="horizontal" :data-source="projectList">
+                        <template #renderItem="{ item }">
+                            <a-list-item>
+                                <a-list-item-meta>
                                     <template #title>
                                         <a :href="item.href" v-title>{{ item.title }}</a>
                                     </template>
                                     <template #avatar>
-                                        <a-avatar :src="item.avatar"/>
+                                        <a-avatar :src="item.avatar" />
                                     </template>
                                     <template #description>
                                         <a-typography-paragraph
@@ -54,48 +79,34 @@
                                             :content="item.description"
                                             v-title
                                         />
+                                        <div style="display: flex">
+                                            <span style="flex-grow: 1">2020-2-12 21:24:24</span>
+                                            <span><eye-outlined /> 111</span>
+                                        </div>
                                     </template>
-                                </a-card-meta>
-                            </a-card-grid>
+                                </a-list-item-meta>
+                            </a-list-item>
                         </template>
-                    </a-card>
-                </div>
-                <!-- 最近更新 -->
-                <div class="recent-updates" style="margin-top: 24px;">
-                    <a-card :title="$t('recentUpdates')">
-                        <template #extra>
-                            <a href="#">{{ $t('allArticle') }}</a>
-                        </template>
-                        <a-list item-layout="horizontal" :data-source="projectList">
-                            <template #renderItem="{ item }">
-                                <a-list-item>
-                                    <a-list-item-meta>
-                                        <template #title>
-                                            <a :href="item.href" v-title>{{ item.title }}</a>
-                                        </template>
-                                        <template #avatar>
-                                            <a-avatar :src="item.avatar" />
-                                        </template>
-                                        <template #description>
-                                            <a-typography-paragraph
-                                                :ellipsis="{ rows: 2, expandable: false}"
-                                                :content="item.description"
-                                                v-title
-                                            />
-                                            <div style="display: flex">
-                                                <span style="flex-grow: 1">2020-2-12 21:24:24</span>
-                                                <span><eye-outlined /> 111</span>
-                                            </div>
-                                        </template>
-                                    </a-list-item-meta>
-                                </a-list-item>
-                            </template>
-                        </a-list>
-                    </a-card>
-                </div>
+                    </a-list>
+                </a-card>
             </a-col>
             <a-col :span="8">
-                <div style="background: #0be881; height: 2000px"></div>
+                <a-card :title="$t('recommend')">
+                    <a-list item-layout="horizontal" :data-source="projectList">
+                        <template #renderItem="{ item }">
+                            <a-list-item>
+                                <a-list-item-meta>
+                                    <template #title>
+                                        <a :href="item.href" v-title>{{ item.title }}</a>
+                                    </template>
+                                    <template #avatar>
+                                        <a-avatar :src="item.avatar" />
+                                    </template>
+                                </a-list-item-meta>
+                            </a-list-item>
+                        </template>
+                    </a-list>
+                </a-card>
             </a-col>
         </a-row>
         <div class="home-footer"></div>
