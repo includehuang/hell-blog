@@ -13,7 +13,7 @@ export const routes = [
     { // 博客
         path: '/blog',
         name: 'Blog',
-        component: () => import('@/views/home/Home'),
+        component: () => import('@/views/blog/Blog'),
     },
     { // 作品
         path: '/works',

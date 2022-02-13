@@ -19,7 +19,9 @@
             </div>
         </a-layout-header>
         <a-layout-content>
-            <router-view/>
+            <div class="main-wrapper">
+                <router-view/>
+            </div>
         </a-layout-content>
     </a-layout>
 </template>
@@ -70,21 +72,18 @@ export default {
 html {
     margin: 0;
     padding: 0;
-    height: 100%;
     min-width: @minWidth;
     min-height: @minHeight;
 }
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
     background-color: rgba(255, 255, 255, 0) !important;
 }
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    height: 100%;
 }
 .blog-app-main {
     .ant-layout-header {
@@ -128,14 +127,14 @@ body {
         }
     }
     .ant-layout-content {
-        width: @minWidth;
-        margin: 0 auto;
-        padding: 0 40px;
-        height: calc(~"100% - @{headerHeight}");
+        width: 100%;
         min-height: calc(~"100% - @{headerHeight}");
-        overflow: auto;
-        &::-webkit-scrollbar {
-            display: none;
+
+        .main-wrapper {
+            width: @minWidth;
+            margin: 0 auto;
+            padding: 0 40px;
+            background: inherit;
         }
     }
 }
