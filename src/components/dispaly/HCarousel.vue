@@ -73,10 +73,8 @@ export default {
 </script>
 
 <style lang="less">
-
 #h-carousel {
     width: 100%;
-
     .swiper-box {
         width: 100%;
         margin: 0 auto;
@@ -88,43 +86,32 @@ export default {
             margin: 0 auto;
             padding-top: 10px;
             padding-bottom: 15px;
-
-
             .swiper-wrapper {
-
                 .swiper-slide {
                     background-position: center;
                     background-size: cover;
                     width: 80%;
-
                     .swiper-img {
                         border-radius: 10px;
                         width: 100%;
                     }
-
-
                 }
             }
 
         }
     }
-
     .swiper-slide-prev {
-        transform: translateX(60%) scale(80%) !important;
-
+        //transform: translateX(60%) scale(80%) !important;
         * {
             pointer-events: none;
         }
     }
-
     .swiper-slide-active {
         z-index: 10 !important;
-        transform: translateX(0) scale(100%) !important;
+        //transform: translateX(0) scale(100%) !important;
     }
-
     .swiper-slide-next {
-        transform: translateX(-60%) scale(80%) !important;
-
+        //transform: translateX(-60%) scale(80%) !important;
         * {
             pointer-events: none;
         }

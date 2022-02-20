@@ -78,6 +78,7 @@ html {
     padding: 0;
     min-width: @minWidth;
     min-height: @minHeight;
+    background-color: rgb(243, 246, 249);
 }
 body {
     margin: 0;
