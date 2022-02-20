@@ -1,23 +1,25 @@
 <template>
     <a-layout class="blog-app-main" id="app">
-        <a-layout-header>
-            <div class="logo left">
-                <img :src="logo" alt="">
-            </div>
-            <a-menu
-                v-model:selectedKeys="selectMenu"
-                theme="light"
-                mode="horizontal"
-                @click="toPath"
-            >
-                <a-menu-item v-for="item in routes.slice(1)" :key="item.path">
-                    {{ $t(`menus.${item.name}`) }}
-                </a-menu-item>
-            </a-menu>
-            <div class="logo right">
-                <img :src="logo" alt="">
-            </div>
-        </a-layout-header>
+        <a-affix :offset-top="0" class="header-affix">
+            <a-layout-header>
+                <div class="logo left">
+                    <img :src="logo" alt="">
+                </div>
+                <a-menu
+                    v-model:selectedKeys="selectMenu"
+                    theme="light"
+                    mode="horizontal"
+                    @click="toPath"
+                >
+                    <a-menu-item v-for="item in routes.slice(1)" :key="item.path">
+                        {{ $t(`menus.${item.name}`) }}
+                    </a-menu-item>
+                </a-menu>
+                <div class="logo right">
+                    <img :src="logo" alt="">
+                </div>
+            </a-layout-header>
+        </a-affix>
         <a-layout-content>
             <div class="main-wrapper">
                 <router-view/>
@@ -55,7 +57,7 @@ export default {
          * @param item
          */
         toPath(item) {
-            if (this.selectMenu !== `/${this.$route.path.split('/')[1]}`) {
+            if (item.key !== `/${this.$route.path.split('/')[1]}`) {
                 this.$router.push({path: item.key})
             }
         }
@@ -88,14 +90,17 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 .blog-app-main {
-    .ant-layout-header {
+    .header-affix {
         background: @headerColor;
         height: @headerHeight;
-        z-index: 1;
+        z-index: 111;
         width: 100%;
         min-width: @minWidth;
         box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px;
         transition: background 0.3s ease 0s, width 0.2s ease 0s;
+        .ant-affix {
+            box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px;
+        }
         .logo {
             display: inline-block;
             width: @headerHeight * @logoScale;
@@ -127,6 +132,13 @@ body {
                 }
             }
         }
+    }
+    .ant-layout-header {
+        background: @headerColor;
+        height: @headerHeight;
+        z-index: 1;
+        width: 100%;
+        min-width: @minWidth;
     }
     .ant-layout-content {
         width: 100%;
