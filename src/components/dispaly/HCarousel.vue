@@ -25,11 +25,7 @@ export default {
         images: {
             type: Array,
             default: () => {
-                return [
-                    {src: '/static/config/blogCarousel/白鹭归庭.png', href: 'https://www.bilibili.com/video/BV1io4y1X7HU', target: "_blank"},
-                    {src: '/static/config/blogCarousel/神女劈观.png', href: 'https://www.bilibili.com/video/BV1kS4y1T7kK', target: "_blank"},
-                    {src: '/static/config/blogCarousel/真夏飞焰.png', href: 'https://www.bilibili.com/video/BV1Ro4y1S7f1', target: "_blank"},
-                ]
+                return []
             }
         },
         option: {

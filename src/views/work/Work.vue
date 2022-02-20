@@ -1,7 +1,7 @@
-<!-- Vue页面 Blog -->
+<!-- Vue页面 Work -->
 <!-- 创建人 Hell Vision -->
-<!-- 创建时间 2022/2/13 -->
-<!-- 页面描述 Blog -->
+<!-- 创建时间 2022/2/20 -->
+<!-- 页面描述 Work -->
 
 <template>
     <div id="blog-app-blog">
@@ -11,7 +11,7 @@
             </a-col>
             <a-col :span="8">
                 <div style="background: #722ed1; height: 300px;">
-<!--                    -->
+                    <!--                    -->
                 </div>
             </a-col>
         </a-row>

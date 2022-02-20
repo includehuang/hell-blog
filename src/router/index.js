@@ -16,9 +16,14 @@ export const routes = [
         component: () => import('@/views/blog/Blog'),
     },
     { // 作品
-        path: '/works',
-        name: 'Works',
-        component: () => import('@/views/home/Home'),
+        path: '/work',
+        name: 'Work',
+        component: () => import('@/views/work/Work'),
+    },
+    { // 作品
+        path: '/project',
+        name: 'Project',
+        component: () => import('@/views/work/Work'),
     },
     { // 关于我
         path: '/me',
