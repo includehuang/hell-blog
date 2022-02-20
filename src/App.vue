@@ -43,11 +43,11 @@ export default {
     },
     watch: {
         $route(to) {
-            this.selectMenu = [to.path]
+            this.selectMenu = [to.path.split('/')[0]]
         },
     },
     mounted() {
-        this.selectMenu = [this.$route.path]
+        this.selectMenu = [this.$route.path.split('/')[0]]
     },
     methods: {
         /**
@@ -55,7 +55,9 @@ export default {
          * @param item
          */
         toPath(item) {
-            this.$router.push({path: item.key})
+            if (this.selectMenu !== this.$route.path.split('/')[0]) {
+                this.$router.push({path: item.key})
+            }
         }
     },
 }
