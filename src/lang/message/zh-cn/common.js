@@ -24,4 +24,5 @@ export default {
     'common.timeMessage.21': '九点了呢，休息一会吧，来点夜宵？',
     'common.timeMessage.22': '夜深了，早点休息吧。',
     'common.timeMessage.23': '新的一天马上开始了，再不睡今天就没机会',
+    'common.return': '返回{0}',
 }

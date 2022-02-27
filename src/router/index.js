@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 export const routes = [
     {
         path: '/',
-        redirect: '/home'
+        redirect: '/home',
     },
     { // 首页
         path: '/home',
@@ -14,6 +14,18 @@ export const routes = [
         path: '/blog',
         name: 'Blog',
         component: () => import('@/views/blog/Blog'),
+        children: [
+            {
+                path: '/blog',
+                name: 'BlogPage',
+                component: () => import('@/views/blog/BlogPage'),
+            },
+            {
+                path: '/blog/reader',
+                name: 'BlogReader',
+                component: () => import('@/views/reader/Reader'),
+            },
+        ]
     },
     { // 作品
         path: '/work',

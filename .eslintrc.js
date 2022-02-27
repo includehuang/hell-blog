@@ -337,13 +337,13 @@ module.exports = {
             const a = 123
             console.log(a)
         */
-        // 'no-unused-vars': [
-        //     1,
-        //     {
-        //         vars: 'all', // 检测所有变量，包括全局环境中的变量。这是默认值
-        //         args: 'none' // 不检查参数
-        //     }
-        // ],
+        'no-unused-vars': [
+            1,
+            {
+                vars: 'all', // 检测所有变量，包括全局环境中的变量。这是默认值
+                args: 'none' // 不检查参数
+            }
+        ],
         /*
           禁止属性前有空白
           ❌
