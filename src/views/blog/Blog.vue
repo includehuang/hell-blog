@@ -10,6 +10,7 @@
         :sub-title="subTitle"
         @back="returnHandle"
     />
+    <router-view></router-view>
 </template>
 
 <script>

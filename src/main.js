@@ -18,4 +18,5 @@ app.use(directive)
 app.config.globalProperties.$day = dayjs
 app.config.globalProperties.$echarts = echarts
 app.config.globalProperties.$axios = axios
+app.config.globalProperties.$ckPlayer = window.CKPlayer
 app.mount('#app')

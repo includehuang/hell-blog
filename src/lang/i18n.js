@@ -1,6 +1,7 @@
 import { createI18n } from "vue-i18n"
 import i18nMessageCreate from "@/assets/js/i18nCreate"
 import componentsMessages from "@/components/lang/i18n"
+// noinspection JSUnresolvedFunction
 const baseMessages = i18nMessageCreate('lang/message', require.context('@/lang/message', true, /\.js$/))
 const messageList = []
 const langList = {}
@@ -15,6 +16,7 @@ function i18nMap(key, value) {
 }
 messageList.forEach(item => {
     for (const key in item) {
+        // noinspection JSUnfilteredForInLoop
         i18nMap(key, item[key])
     }
 })

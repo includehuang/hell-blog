@@ -5,7 +5,7 @@
 
 <template>
     <div id="blog-app-home">
-        <a-row :gutter="24">
+        <a-row>
             <!-- Home页Header -->
             <a-col :span="24" class="home-header">
                 <div class="home-header-content">
@@ -31,7 +31,7 @@
                 </div>
             </a-col>
         </a-row>
-        <a-row :gutter="24">
+        <a-row :gutter="16">
             <a-col :span="16">
                 <!-- 进行中的项目 -->
                 <a-card class="run-projects" :title="$t('runningProject')">

@@ -5,7 +5,7 @@
 
 <template>
     <div id="blog-app-blog">
-        <a-row :gutter="24" style="height: 300px">
+        <a-row style="height: 300px">
             <a-col :span="16">
                 <h-carousel v-if="imgList.length" :images="imgList" style="width: 780px; height: 270px; margin: 0 auto"/>
             </a-col>
@@ -15,7 +15,7 @@
                 </div>
             </a-col>
         </a-row>
-        <a-row :gutter="24" style="margin-top: 24px;">
+        <a-row :gutter="16" style="margin-top: 24px;">
             <a-col :span="16">
                 <!-- 最近更新 -->
                 <a-card class="recent-updates" :title="$t('recentUpdates')">
