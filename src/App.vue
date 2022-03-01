@@ -94,7 +94,7 @@ body {
     .header-affix {
         background: @headerColor;
         height: @headerHeight;
-        z-index: 111;
+        z-index: 11111;
         width: 100%;
         min-width: @minWidth;
         box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px;
