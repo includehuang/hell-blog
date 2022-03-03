@@ -46,7 +46,7 @@ export default {
                 container: '#ckplayer', // 视频容器的ID
                 poster: 'static/ckplayer/video/poster.png', // 封面图片地址
                 video: 'static/ckplayer/video/lc.mp4', // 视频地址
-                volume: 0.8, // 默认音量，范围0-1
+                volume: 0.5, // 默认音量，范围0-1
                 autoplay: false, // 是否自动播放
                 loop: false, // 是否需要循环播放
                 live: false, // 是否是直播
