@@ -91,7 +91,7 @@ export default {
             this.imgList = res.data
         })
         // 获取进行中的项目（此处暂时由前端写死，更新时直接更新config）
-        this.$axios.get('/static/config/projectList.json').then(res => {
+        this.$axios.get('/static/config/blogText.json').then(res => {
             this.projectList = res.data
         })
     },

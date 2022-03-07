@@ -32,10 +32,14 @@ export default {
         }
     },
     mounted() {
+        const id = Number(this.$route.query.id)
         // 获取博客内容预览
         this.$axios.get('/static/config/blogText.json').then(res => {
-            this.content = res.data.content
-            this.playerOption = res.data.playerOption
+            // this.content = res.data[id - 1].content.typora.value
+            this.playerOption = res.data[id - 1].content.playerOption
+            this.$axios.get(res.data[id - 1].content.typora.value).then(res => {
+                this.content = res.data
+            })
         })
     },
     methods: {}

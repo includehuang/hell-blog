@@ -44,11 +44,9 @@ export default {
                 '    <link type="text/css" rel="stylesheet" href="static/css/typora.css">\n' +
                 '    <link type="text/css" rel="stylesheet" href="static/css/typoraFont.css">\n' +
                 '    <title>阅读</title>\n' +
-                '</head>\n' +
-                '<body>')
+                '</head>\n')
             iframe.document.write(this.content)
             iframe.document.write('\n' +
-                '</body>\n' +
                 '</html>')
             iframe.document.close()
             document.getElementById('write').height = iframe.document.documentElement.offsetHeight
