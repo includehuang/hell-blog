@@ -24,17 +24,18 @@ export default {
     },
     watch: {
         $route(val) {
-            this.showReturn = val.path !== '/blog'
-            this.title = this.$t('common.return', [this.$t('menus.BlogPage')])
+            this.showReturn = val.path !== '/blog/index'
+            this.title = this.$t('common.return.temp', [this.$t('menus.BlogPage')])
         },
     },
     mounted() {
-        this.showReturn = this.$route.path !== '/blog'
-        this.title = this.$t('common.return', [this.$t('menus.BlogPage')])
+        this.showReturn = this.$route.path !== '/blog/index'
+        this.title = this.$t('common.return.temp', [this.$t('menus.BlogPage')])
     },
     methods: {
         returnHandle() {
-            this.$router.push({path: '/blog'})
+            this.$router.push({path: '/blog/index'})
+            this.showReturn = this.$route.path !== '/blog/index'
         }
     }
 }

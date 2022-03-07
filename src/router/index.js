@@ -13,10 +13,11 @@ export const routes = [
     { // 博客
         path: '/blog',
         name: 'Blog',
+        redirect: '/blog/index',
         component: () => import('@/views/blog/Blog'),
         children: [
             {
-                path: '/blog',
+                path: '/blog/index',
                 name: 'BlogPage',
                 component: () => import('@/views/blog/BlogPage'),
             },

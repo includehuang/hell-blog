@@ -1,40 +1,48 @@
 <template>
-    <a-layout class="blog-app-main" id="app">
-        <a-affix :offset-top="0" class="header-affix">
-            <a-layout-header>
-                <div class="logo left">
-                    <img :src="logo" alt="">
+    <a-config-provider :locale="zhCN">
+        <a-layout class="blog-app-main" id="app">
+            <a-affix :offset-top="0" class="header-affix">
+                <a-layout-header>
+                    <div class="logo left">
+                        <img :src="logo" alt="">
+                    </div>
+                    <a-menu
+                        v-model:selectedKeys="selectMenu"
+                        theme="light"
+                        mode="horizontal"
+                        @click="toPath"
+                    >
+                        <a-menu-item v-for="item in routes.slice(1)" :key="item.path">
+                            {{ $t(`menus.${item.name}`) }}
+                        </a-menu-item>
+                    </a-menu>
+                    <div class="logo right">
+                        <img :src="logo" alt="">
+                    </div>
+                </a-layout-header>
+            </a-affix>
+            <a-layout-content>
+                <div class="main-wrapper">
+                    <router-view/>
                 </div>
-                <a-menu
-                    v-model:selectedKeys="selectMenu"
-                    theme="light"
-                    mode="horizontal"
-                    @click="toPath"
-                >
-                    <a-menu-item v-for="item in routes.slice(1)" :key="item.path">
-                        {{ $t(`menus.${item.name}`) }}
-                    </a-menu-item>
-                </a-menu>
-                <div class="logo right">
-                    <img :src="logo" alt="">
-                </div>
-            </a-layout-header>
-        </a-affix>
-        <a-layout-content>
-            <div class="main-wrapper">
-                <router-view/>
-            </div>
-        </a-layout-content>
-    </a-layout>
+            </a-layout-content>
+        </a-layout>
+    </a-config-provider>
 </template>
 
 <script>
 import { routes } from "@/router"
 import logo from "@/assets/img/image2vector.svg"
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import dayjs from "dayjs"
+import 'dayjs/locale/zh-cn'
+
+dayjs.locale('zh-cn')
 
 export default {
-    data() {
+    setup() {
         return {
+            zhCN,
             routes,
             logo,
             selectMenu: [],

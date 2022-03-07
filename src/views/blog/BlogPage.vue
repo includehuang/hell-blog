@@ -3,16 +3,15 @@
 <!-- 创建时间 2022/2/20 -->
 <!-- 页面描述 blogPage -->
 
+<!--suppress HtmlUnknownAttribute -->
 <template>
     <div id="blog-app-blog">
-        <a-row style="height: 300px">
+        <a-row style="height: 360px">
             <a-col :span="16">
-                <h-carousel v-if="imgList.length" :images="imgList" style="width: 780px; height: 270px; margin: 0 auto"/>
+                <h-carousel v-if="imgList.length" :images="imgList" style="width: 780px; height: 320px; margin: 20px auto 20px"/>
             </a-col>
-            <a-col :span="8">
-                <div style="background: #722ed1; height: 300px;">
-                    <!--                    -->
-                </div>
+            <a-col :span="8" class="search-box">
+                <a-calendar :fullscreen="false"/>
             </a-col>
         </a-row>
         <a-row :gutter="16" style="margin-top: 24px;">
@@ -99,6 +98,10 @@ export default {
 }
 </script>
 
-<style lang="less">
-
+<style lang="less" scoped>
+#blog-app-blog {
+    .search-box {
+        padding: 20px;
+    }
+}
 </style>

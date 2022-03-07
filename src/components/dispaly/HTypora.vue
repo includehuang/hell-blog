@@ -6,7 +6,7 @@
 <template>
     <div :class="className" class='h-typora-wrapper typora-export os-windows'>
         <div class='typora-export-content'>
-            <div id='write' class='' v-html="content"></div>
+            <iframe id="write" class="" name="write"></iframe>
         </div>
     </div>
 </template>
@@ -23,16 +23,47 @@ export default {
             default: '',
         },
     },
+    watch: {
+        content() {
+            this.setIframe()
+        }
+    },
+    mounted() {
+        this.setIframe()
+        this.setIframe()
+    },
+    methods: {
+        setIframe() {
+            const iframe = window.frames['write']
+            iframe.document.open()
+            iframe.document.write('<!DOCTYPE html>\n' +
+                '<html lang="">\n' +
+                '<head>\n' +
+                '    <meta charset="utf-8">\n' +
+                '    <meta http-equiv="X-UA-Compatible" content="IE=edge">\n' +
+                '    <link type="text/css" rel="stylesheet" href="static/css/typora.css">\n' +
+                '    <link type="text/css" rel="stylesheet" href="static/css/typoraFont.css">\n' +
+                '    <title>阅读</title>\n' +
+                '</head>\n' +
+                '<body>')
+            iframe.document.write(this.content)
+            iframe.document.write('\n' +
+                '</body>\n' +
+                '</html>')
+            iframe.document.close()
+            document.getElementById('write').height = iframe.document.documentElement.offsetHeight
+        }
+    }
 }
 </script>
-
-<!--suppress CssUnknownTarget -->
 <style lang="less" scoped>
-@import "~@/assets/style/typora.css";
-@import "~@/assets/style/typoraFont.css";
 .h-typora-wrapper {
     width: 100%;
     background: #ffffff;
     font-size: @font-size-base;
+    #write {
+        width: 100%;
+        border: none;
+    }
 }
 </style>
