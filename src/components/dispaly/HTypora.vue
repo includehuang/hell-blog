@@ -6,7 +6,7 @@
 <template>
     <div :class="className" class='h-typora-wrapper typora-export os-windows'>
         <div class='typora-export-content'>
-            <iframe id="write" class="" name="write"></iframe>
+            <iframe class="typora-write-wrapper" ref="wrapper" name="typora-write-wrapper"></iframe>
         </div>
     </div>
 </template>
@@ -30,11 +30,10 @@ export default {
     },
     mounted() {
         this.setIframe()
-        this.setIframe()
     },
     methods: {
         setIframe() {
-            const iframe = window.frames['write']
+            const iframe = this.$refs.wrapper.contentWindow
             iframe.document.open()
             iframe.document.write('<!DOCTYPE html>\n' +
                 '<html lang="">\n' +
@@ -49,7 +48,8 @@ export default {
             iframe.document.write('\n' +
                 '</html>')
             iframe.document.close()
-            document.getElementById('write').height = iframe.document.documentElement.offsetHeight
+            // noinspection JSValidateTypes
+            this.$refs.wrapper.height = iframe.document.documentElement.offsetHeight
         }
     }
 }
@@ -59,7 +59,7 @@ export default {
     width: 100%;
     background: #ffffff;
     font-size: @font-size-base;
-    #write {
+    .typora-write-wrapper {
         width: 100%;
         border: none;
     }
