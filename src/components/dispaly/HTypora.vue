@@ -4,10 +4,8 @@
 <!-- 页面描述 HTypora -->
 
 <template>
-    <div :class="className" class='h-typora-wrapper typora-export os-windows'>
-        <div class='typora-export-content'>
-            <iframe class="typora-write-wrapper" ref="wrapper" name="typora-write-wrapper"></iframe>
-        </div>
+    <div :class="className" class='h-typora-wrapper'>
+        <iframe class="typora-write-wrapper" ref="wrapper" name="typora-write-wrapper" @load="setIframeHeight"></iframe>
     </div>
 </template>
 
@@ -48,6 +46,9 @@ export default {
             iframe.document.write('\n' +
                 '</html>')
             iframe.document.close()
+        },
+        setIframeHeight() {
+            const iframe = this.$refs.wrapper.contentWindow
             // noinspection JSValidateTypes
             this.$refs.wrapper.height = iframe.document.documentElement.offsetHeight
         }
